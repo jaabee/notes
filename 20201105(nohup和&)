@@ -22,3 +22,9 @@ nohup command &
 2. 0 22 * * * /usr/bin/python /home/pu/download_pdf/download_dfcf_pdf_to_oss.py > /home/pu/download_pdf/download_dfcf_pdf_to_oss.log 2>&1
 这是放在crontab中的定时任务，晚上22点时候怕这个任务，启动这个python的脚本，并把日志写在download_dfcf_pdf_to_oss.log文件中
 ```
+
+#### 列出所有的网络连接
+lsof -i
+
+#### 列出所有tcp 网络连接信息
+lsof  -i tcp
