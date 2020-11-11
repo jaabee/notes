@@ -1,8 +1,10 @@
-[链接](https://blog.csdn.net/raoxiaoya/article/details/104241467)
+[链接](https://blog.csdn.net/raoxiaoya/article/details/104241467)  [链接](https://blog.csdn.net/qq_42015552/article/details/103770293)
+[链接](https://blog.csdn.net/raoxiaoya/article/details/103066624)
 #### 实现过程(以延迟队列为例，用redis实现)
 1. 将job插入延迟队列，redis中使用有序集合zset,以任务要执行的时间为score
 2. 将到期的job从延迟队列中取出，rpush放入未处理队列中，用当前时间戳判断，使用lua锁，防止多进程下redis命令执行冲突问题
 3. 将job从未处理队列中去除rpop，rpop，rpush可以保证先到时间的job先执行
+4. 每次轮训先去检查所有延迟队列和重试时间到了的队列
 
 #### 命令
 ```
